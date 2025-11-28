@@ -23,36 +23,46 @@ Add your timetable using `<td>` tag.
 Execute the program using runserver command.
 
 # PROGRAM
+
+{% load static %}
+
+<!DOCTYPE html>
+
 <html>
-<head>
-    <title>My Timetable</title>
-</head>
-<body style="font-family: Arial; text-align: center;">
+    <head>
+        <title>SLOT TIMETABLE</title>
 
-    <img src="images.png">
-    <h2> Timetable</h2>
-    
+        <link rel="stylesheet" href="{% static 'CSS.css' %}">
 
-    <table border="1" cellspacing="0" cellpadding="10" align="center">
-        <tr style="background-color: #d0e0ff;">
-            <th>Time</th>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
+        <link rel="icon" href="{% static 'SEC-Logo-1.png'%}">
+
+    </head>
+
+    <body>
+        <center>
+            <img src = "{% static 'SAVEETHA.png' %}" height="100" width="700">
+        </center>    
+        <h2>SLOT TIMETABLE</h2>
+        <h3>carlton maximus-25006709</h3>
+        <center>
+        <table>
+        <tr>
+            <th> DAY/TIME</th>
+            <th> MONDAY</th>
+            <th> TUESDAY</th>
+            <th> WEDNESDAY</th>
+            <th> THURSDAY</th>
+            <th> FRIDAY</th>
+            <th> SATURDAY</th>
         </tr>
-
         <tr>
             <td><b>8:00 - 10:00</b></td>
             <td colspan="3"style="text-align:center";>web</td>
             <td rowspan="2"text-align="center";>free</td>
             <td>free</td>
             <td>pyt</td>
-        </tr>
-
-        <tr>
+         </tr>
+         <tr>
             <td><b>10:00 - 12:00</b></td>
             <td>eng</td>
             <td>pyt</td>
@@ -60,12 +70,10 @@ Execute the program using runserver command.
             <td>eng</td>
             <td>eng</td>
         </tr>
-
         <tr style="background-color: #ffe4b5;">
             <td><b>12:00 - 1:00</b></td>
             <td colspan="6"style="text-align:center";><b>LUNCH</b></td>
         </tr>
-
         <tr>
             <td><b>1:00 - 3:00</b></td>
             <td>web</td>
@@ -74,18 +82,16 @@ Execute the program using runserver command.
             <td>free</td>
             <td>web</td>
             <td>eng</td>
-        </tr>
-
-        <tr>
-            <td><b>3:00 - 5:00</b></td>
+            </tr>
+            <tr>
+               <td><b>3:00 - 5:00</b></td>
             <td>free</td>
             <td colspan="3"style="text-align:center";>pyt</td>
             <td colspan="3"style="text-align:center";>free</td>
-        </tr>
-    </table>
-    <br>
-    <br>
-    <table border="1" cellspacing="0" cellpadding="10" align="center">
+            </tr>
+        </table>
+        <h3></h3>
+        <table border="1" cellspacing="0" cellpadding="10" align="center">
         <tr style="background-color: #ffe4b5;">
             <th>S.no</th>
             <th>sub code</th>
@@ -106,12 +112,72 @@ Execute the program using runserver command.
             <td>19EN101</td>
             <td>communicative English</td>
         </tr>
-
-</body>
+        </table>
+    </center>
+</body> 
 </html>
 
+
+CSS
+
+
+            table{
+                background-color:rgb(127, 180, 244);
+                border:2px solid black;
+                width:50%;
+                text-align:center;
+                border-collapse:collapse;
+                padding:10px;
+            }
+            th{
+                border: 2px solid black;
+                text-align:center;
+                padding:10px;
+                font-family:"Footlight MT Light";
+            }
+            td{
+                text-align:center;
+                padding:10px;
+                border:2px solid black;
+                background-color:rgb(206, 231, 252);
+                font-family: "Palatino Linotype";
+            }
+            h3{
+                text-align:center;
+                font-family: "Lucida Calligraphy";
+            }
+            h2{
+                text-align: center;
+                font-family:"Eras Medium ITC" ;
+            }
+            body {
+                 font-family: "Montserrat Bold";
+                 background-color: rgb(215, 234, 255);
+            }
+
+views.py
+
+from django.shortcuts import render
+
+def home(request):
+    return render(request, 'timetable.html')
+
+urls.py
+
+from django.contrib import admin
+from django.urls import path
+from slot_app import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.home)
+    
+]
+
+
 # OUTPUT
-<img width="1720" height="930" alt="image" src="https://github.com/user-attachments/assets/03daebc9-01c9-4875-8da1-df10b334a377" />
+<img width="1611" height="949" alt="image" src="https://github.com/user-attachments/assets/dabcb58f-6b83-45fd-9f9b-5a841b98e03d" />
+
 
 # RESULT
 The program for creating slot timetable using basic HTML tags is executed successfully.
